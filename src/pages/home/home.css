@@ -29,6 +29,7 @@
 }
 .yellow {
   color: yellow;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {

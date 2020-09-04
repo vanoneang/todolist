@@ -9,7 +9,7 @@ function App() {
 
       <BrowserRouter>
           <Route path='/' exact component={Home}></Route>
-          <Route path='/todo' exact component={TodoList}></Route>
+          <Route path='/todo/:name' exact component={TodoList}></Route>
       </BrowserRouter>
     
 

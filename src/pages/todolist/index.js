@@ -1,38 +1,46 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 import { Input, Button, List } from 'antd';
 import { ADD_TODO_ITEM, DELETE_TODO_ITEM, CHANGE_INPUT_VALUE } from '../../store/actionTypes'
 
 
 
-const TodoList = (props) => {
+class TodoList extends React.Component {
+ 
+    
+    // const { inputValue, list, changeInputValue, handleClick, deleteItem } = props;
+  render () {
 
-    const { inputValue, list, changeInputValue, handleClick, deleteItem } = props;
-    return (
-      <div style={{marginTop: '10px', marginLeft: '10px'}}>
-        <div>
-          <Input 
-            value={inputValue}
-            placeholder='todo info'  
-            onChange={changeInputValue}
-            style={{width: '300px', marginRight: '10px'}}
+      return (
+        <div style={{marginTop: '10px', marginLeft: '10px'}}>
+          <label>{this.props.match.params.name}:</label>
+          <div>
+            <Input 
+              value={this.props.inputValue}
+              placeholder='todo info'  
+              onChange={this.props.changeInputValue}
+              style={{width: '300px', marginRight: '10px'}}
+            />
+            <Button type="primary" onClick={this.props.handleClick}>提交</Button>
+          </div>
+          <List
+            style={{marginTop: '10px', width: '300px'}}
+            bordered
+            dataSource={this.props.list}
+            renderItem={
+            (item, index) => (<List.Item onClick={() => {this.props.deleteItem(index)}}>{index+1}. {item.value} {item.timestamp}</List.Item>)
+            }
           />
-          <Button type="primary" onClick={handleClick}>提交</Button>
         </div>
-        <List
-          style={{marginTop: '10px', width: '300px'}}
-          bordered
-          dataSource={list}
-          renderItem={
-          (item, index) => (<List.Item onClick={() => {deleteItem(index)}}>{index+1}. {item.value} {item.timestamp}</List.Item>)
-          }
-        />
-      </div>
-    )
+      )
+  }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+  console.log('props', props);
+  
 	return {
 		inputValue: state.inputValue,
 		list: state.list
@@ -69,4 +77,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TodoList));
