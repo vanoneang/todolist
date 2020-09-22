@@ -24,6 +24,6 @@ app.use(serve(path.join(__dirname)));
 InitManager.init(app)
 app.use(router.allowedMethods());
 
-app.listen(3000, () => {
+module.exports = app.listen(3000, () => {
   console.log('Server is starting at port 3000')
 });
