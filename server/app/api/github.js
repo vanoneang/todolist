@@ -25,20 +25,18 @@ router.get('/callback', async ctx => {
 async function getAccessToken(code) {
   const file = path.join(__dirname, '../../config/token.json')
   const text = fs.readFileSync(file, 'utf8')
+  
   const tokenInfo = JSON.parse(text)
   if (new Date().getTime() < tokenInfo.expired) {
     return tokenInfo.token
   }
 
-  const tokenResponse = await axios({
-    method: 'POST',
-    url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}`,
+  const tokenResponse = await axios.post(`https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}`, {
     headers: {
       accept: 'application/json'
     }
   })
   const accessToken = tokenResponse.data.access_token;
-  console.log('accessToken', accessToken);
 
   fs.writeFile(file, JSON.stringify({
     token: accessToken,
@@ -47,16 +45,14 @@ async function getAccessToken(code) {
     if(err){
 	    console.log('writeFile err: ', err);
     }
-})
+  })
 
   return accessToken
   
 }
 
 async function getGuestInfo(accessToken) {
-  const result = await axios({
-    method: 'GET',
-    url: 'https://api.github.com/user',
+  const result = await axios.get('https://api.github.com/user', {
     headers: {
       accept: 'application/json',
       Authorization: `token ${accessToken}`
@@ -66,3 +62,7 @@ async function getGuestInfo(accessToken) {
 }
 
 module.exports = router
+module.exports = {
+  getAccessToken,
+  getGuestInfo
+}

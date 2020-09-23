@@ -84,6 +84,8 @@
     "server": "node index.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
+    "server:test": "jest --watchAll",
+    "coverage": "jest --coverage",
     "report": "npm run build --withReport true"
   },
   "eslintConfig": {
