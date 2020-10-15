@@ -1,6 +1,6 @@
 const fs = require('fs');
 const axios = require("axios")
-const { getAccessToken, getGuestInfo } = require("../../app/api/github") 
+const { getAccessToken, getGuestInfo } = require("../../service/token") 
 
 jest.mock('fs')
 jest.mock("axios")
@@ -13,7 +13,7 @@ test("should get guest userinfo", async () => {
 
 describe("getAccessToken", () => {
   test("token is valid", async () => {
-    const expired = new Date().getTime() + 7000 * 1000
+    const expired = new Date().getTime() + 7 * 1000
     fs.readFileSync.mockReturnValue(`{"token":"mock token","expired":${expired}}`) 
     const data = await getAccessToken("mockCode")
     expect(data).toEqual("mock token")

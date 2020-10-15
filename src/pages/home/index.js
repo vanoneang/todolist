@@ -11,7 +11,7 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p  className="yellow" onClick={this.handleLogin}>Login with GitHub</p>
-          <div><input onChange={this.handleUpload} type="file" name='file'></input></div>
+          {/* <div><input onChange={this.handleUpload} type="file" name='file'></input></div> */}
         </header>
       </div>
     )

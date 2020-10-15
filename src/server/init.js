@@ -8,7 +8,7 @@ class InitManager {
   }
 
   static initLoadRouters() {
-    const apiDirectory = `${process.cwd()}/server/app/api`
+    const apiDirectory = `${process.cwd()}/src/server/api`
     requireDirectory(module, apiDirectory, {
       visit: (obj) => {
         if(obj instanceof Router ){

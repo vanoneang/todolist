@@ -1,3 +1,3 @@
 // require('@babel/register');
 
-require('./server/starter');
+require('./src/server/starter');

@@ -1,29 +1,12 @@
 const fs = require('fs')
 const path = require('path')
 const axios = require('axios')
-const Router = require('koa-router')
 
 const clientID = 'a03a30cd8596c3faf592'
 const clientSecret = 'c7f61114fd513d4261e8d4a2b81f3d258f2cb6be'
 
-
-const router = new Router({
-  prefix: '/oauth/github'
-})
-
-router.get('/callback', async ctx => {
-  const requestToken = ctx.request.query.code;
-
-  
-  const accessToken = await getAccessToken(requestToken)
-  const guestInfo = await getGuestInfo(accessToken)
-  
-  ctx.redirect(`http://localhost:8080/todo/${guestInfo.name}`)
-  
-})
-
 async function getAccessToken(code) {
-  const file = path.join(__dirname, '../../config/token.json')
+  const file = path.join(__dirname, '../config/token.json')
   const text = fs.readFileSync(file, 'utf8')
   
   const tokenInfo = JSON.parse(text)
@@ -31,7 +14,7 @@ async function getAccessToken(code) {
     return tokenInfo.token
   }
 
-  const tokenResponse = await axios.post(`https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}`, {
+  const tokenResponse = await axios.post(`https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}`, {}, {
     headers: {
       accept: 'application/json'
     }
@@ -61,7 +44,6 @@ async function getGuestInfo(accessToken) {
   return result.data
 }
 
-module.exports = router
 module.exports = {
   getAccessToken,
   getGuestInfo
