@@ -7,12 +7,11 @@ const router = new Router({
 })
 
 router.get('/callback', async ctx => {
-
   const requestToken = ctx.request.query.code;  
   const accessToken = await getAccessToken(requestToken)
   const guestInfo = await getGuestInfo(accessToken)
   
-  ctx.redirect(`http://localhost:8080/todo/${guestInfo.name}`)
+  ctx.redirect(`http://localhost:3000/#/todo/${guestInfo.name}`)
   
 })
 

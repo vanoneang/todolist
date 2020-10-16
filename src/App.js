@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
 import TodoList from './pages/todolist/loadable'
 import Home from './pages/home'
 
@@ -7,10 +7,10 @@ import Home from './pages/home'
 function App() {
   return (
 
-      <BrowserRouter>
+      <Router>
           <Route path='/' exact component={Home}></Route>
           <Route path='/todo/:name' exact component={TodoList}></Route>
-      </BrowserRouter>
+      </Router>
     
 
   );
