@@ -13,7 +13,7 @@ class InitManager {
       visit: (obj) => {
         if(obj instanceof Router ){
           InitManager.app.use(obj.routes())
-      }
+        }
       }
     })
   }

@@ -2,7 +2,11 @@ const { Model, Sequelize } = require('sequelize')
 const sequelize = require('./index')
 
 class File extends Model {
-
+  static async createRecord (args, commit) {
+    const record = File.build(args);
+    commit && (await record.save());
+    return record;
+  }
 }
 
 File.init(
@@ -33,10 +37,21 @@ File.init(
       type: Sequelize.INTEGER,
       allowNull: true
     },
+    uuid: {
+      type: Sequelize.STRING(40),
+      allowNull: true
+    },
   }, {
     sequelize,
     tableName: 'file',
     modelName: 'file',
+    indexes: [
+      {
+        name: 'uuid_del',
+        unique: true,
+        fields: ['uuid', 'delete_time']
+      }
+    ],
     options: {
       createdAt: 'create_time',
       updatedAt: 'update_time',
@@ -54,4 +69,4 @@ File.init(
   }
 )
 
-export { File as FileModel }
+module.exports = { FileModel: File  }

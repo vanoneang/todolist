@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const Router = require('koa-router')
+const { FileModel } = require('../model/file')
 
 const router = new Router({
   prefix: '/stream'
@@ -9,8 +10,9 @@ const router = new Router({
 router.post('/upload', async (ctx) => {
 
   const file = ctx.request.files.file
+
   const fileReader = fs.createReadStream(file.path);
-  const filePath = path.join(__dirname, '../../static/upload/');
+  const filePath = path.join(__dirname, '../static/upload/');
   const fileResource = filePath + `${file.name}`;
 
   const writeStream = fs.createWriteStream(fileResource);

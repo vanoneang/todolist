@@ -7,10 +7,10 @@ import Home from './pages/home'
 function App() {
   return (
 
-      <Router>
-          <Route path='/' exact component={Home}></Route>
-          <Route path='/todo/:name' exact component={TodoList}></Route>
-      </Router>
+    <Router>
+      <Route path='/' exact component={Home}></Route>
+      <Route path='/todo/:name' exact component={TodoList}></Route>
+    </Router>
     
 
   );

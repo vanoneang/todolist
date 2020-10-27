@@ -5,6 +5,7 @@ const serve = require('koa-static')
 const mount = require('koa-mount')
 const koaBody = require('koa-body');
 const router = require('koa-router')();
+const { multipart } = require('lin-mizar');
 
 const InitManager = require('./init')
 
@@ -27,6 +28,7 @@ app.use(serve(path.join(__dirname)));
 
 InitManager.init(app)
 app.use(router.allowedMethods());
+multipart(app);
 
 module.exports = app.listen(3000, () => {
   console.log('Server is starting at port 3000')

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom'
 import logo from './logo.svg';
 import './home.css';
 
@@ -8,11 +9,15 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p  className="yellow" onClick={this.handleLogin}>Login with GitHub</p>
-          {/* <div><input onChange={this.handleUpload} type="file" name='file'></input></div> */}
-        </header>
+        <div className="box">
+          <div className="left">
+            <input onChange={this.handleUpload} type="file" name='file' multiple></input>
+          </div>
+        </div>
+        {/* <p  className="yellow" onClick={this.handleLogin}>Login with GitHub</p>
+          <p ><Link to="/upload"><button>Upload File</button></Link></p> */}
+        {/* <div><input onChange={this.handleUpload} type="file" name='file'></input></div> */}
+
       </div>
     )
   };

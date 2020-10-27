@@ -35,15 +35,19 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: true
       },
+      uuid: {
+        type: Sequelize.STRING(40),
+        allowNull: true
+      },
       "createdAt": {
         "type": Sequelize.DATE,
         "field": "create_time",
         "allowNull": false
       },
       "updatedAt": {
-          "type": Sequelize.DATE,
-          "field": "update_time",
-          "allowNull": false
+        "type": Sequelize.DATE,
+        "field": "update_time",
+        "allowNull": false
       },
       "deletedAt": {
         "type": Sequelize.DATE,
