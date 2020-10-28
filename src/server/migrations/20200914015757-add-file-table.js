@@ -41,18 +41,20 @@ module.exports = {
       },
       "createdAt": {
         "type": Sequelize.DATE,
+        defaultValue: new Date(),
         "field": "create_time",
         "allowNull": false
       },
       "updatedAt": {
         "type": Sequelize.DATE,
+        defaultValue: new Date(),
         "field": "update_time",
         "allowNull": false
       },
       "deletedAt": {
         "type": Sequelize.DATE,
         "field": "delete_time",
-        "allowNull": false
+        "allowNull": true
       }
     });
   },

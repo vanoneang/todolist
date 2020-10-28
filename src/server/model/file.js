@@ -45,6 +45,7 @@ File.init(
     sequelize,
     tableName: 'file',
     modelName: 'file',
+    timestamps: false,
     indexes: [
       {
         name: 'uuid_del',
