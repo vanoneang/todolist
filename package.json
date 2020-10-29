@@ -87,8 +87,7 @@
     "server": "nodemon index.js",
     "build": "node scripts/build.js",
     "lint": "eslint \"./src/**/*.{js,jsx}\"",
-    "test": "node scripts/test.js",
-    "server:test": "jest --watchAll",
+    "test": "jest",
     "coverage": "jest --coverage",
     "cypress:open": "cypress open",
     "report": "npm run build --withReport true"
