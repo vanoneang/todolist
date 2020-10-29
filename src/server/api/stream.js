@@ -8,6 +8,15 @@ const router = new Router({
   prefix: '/stream'
 })
 
+router.get('/', async (ctx) => {
+  const files = await FileModel.findAll();
+  ctx.body = {
+
+    code: 0,
+    files
+  }
+})
+
 router.post('/upload', async (ctx) => {
 
   const file = ctx.request.files.file

@@ -1,5 +1,5 @@
 import React from 'react';
-import 'antd/dist/antd.css';
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { Input, Button, List } from 'antd';
@@ -15,7 +15,7 @@ class TodoList extends React.Component {
 
     return (
       <div style={{marginTop: '10px', marginLeft: '10px'}}>
-        <label>{this.props.match.params.name}:</label>
+        {/* <label>{this.props.match.params.name}:</label> */}
         <div>
           <Input 
             value={this.props.inputValue}
@@ -39,7 +39,6 @@ class TodoList extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('props', props);
   
   return {
     inputValue: state.inputValue,
