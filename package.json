@@ -91,7 +91,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "cypress:open": "cypress open",
-    "test:integration": "npm run build && start-server-and-test start http://localhost:3000 \"cypress run --config video=false --browser chrome\"",
+    "test:integration": "npm run build && start-server-and-test start http://localhost:3000 \"cross-env NODE_ENV=test cypress run --config video=false --browser chrome\"",
     "report": "npm run build --withReport true"
   },
   "eslintConfig": {
