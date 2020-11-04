@@ -11,8 +11,8 @@ describe('When I visit home page', () => {
     cy.get('[data-test="link-of-todo"]').contains('Todo List')
   })
 
-  it("Should redirect to upload page", () => {
-    cy.get('[data-test="link-of-upload"]').click()
-    cy.url().should('includes', '/files')
+  it("Should redirect to todo page", () => {
+    cy.get('[data-test="link-of-todo"]').click()
+    cy.url().should('includes', '/todo')
   })
 })
