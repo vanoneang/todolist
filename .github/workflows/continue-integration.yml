@@ -3,10 +3,7 @@
 
 name: CI
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
@@ -23,8 +20,9 @@ jobs:
     steps:
     - name: Verify MySQL connection from host
       run: |
-          sudo apt-get install -y mysql-client
-            mysql --host 127.0.0.1 --port 3306 -uroot -proot -e "SHOW DATABASES"
+          apt-get update
+          apt-get install -y mysql-client
+          mysql -uroot -h127.0.0.1 -proot -e "CREATE DATABASE IF NOT EXISTS todo;"
 
 
     - uses: actions/checkout@v2
