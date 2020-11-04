@@ -22,6 +22,7 @@ jobs:
       run: |
           sudo apt-get update
           sudo apt-get install -y mysql-client
+          sudo systemctl start mysql
           mysql -uroot -h127.0.0.1 -proot -e "CREATE DATABASE IF NOT EXISTS todo;"
 
 
