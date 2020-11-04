@@ -5,7 +5,10 @@ module.exports = {
   ],
   "overrides": [
     {
-      "indent": ["error", 2]
+      "files": ["**/*.js"],
+      "rules": {
+        "indent": ["error", 2]
+      }
     },
     {
       "files": ["*.cy.js", "*.cy.jsx"],
