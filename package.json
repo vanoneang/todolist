@@ -83,13 +83,15 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "node index.js",
+    "start:client": "node scripts/start.js",
     "server": "nodemon index.js",
     "build": "node scripts/build.js",
     "lint": "eslint \"./src/**/*.{js,jsx}\"",
     "test": "jest",
     "coverage": "jest --coverage",
     "cypress:open": "cypress open",
+    "test:integration": "npm run build && start-server-and-test start http://localhost:3000 \"cypress run --config video=false --browser chrome\"",
     "report": "npm run build --withReport true"
   },
   "eslintConfig": {
@@ -164,15 +166,17 @@
     ],
     "plugins": [
       "babel-plugin-react-scoped-css"
-    ]    
+    ]
   },
   "devDependencies": {
     "babel-plugin-react-scoped-css": "^1.1.0",
     "cypress": "^5.3.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.0",
     "scoped-css-loader": "^1.0.0",
     "sequelize-cli": "^6.2.0",
+    "start-server-and-test": "^1.11.5",
     "webpack-bundle-analyzer": "^3.8.0"
   },
   "husky": {

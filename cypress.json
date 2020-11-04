@@ -1,1 +1,6 @@
-{}
+{
+  "chromeWebSecurity": false,
+  "baseUrl": "http://localhost:3000",
+  "testFiles": "**/*.cy.{js,jsx}",
+  "integrationFolder": "./src"
+}

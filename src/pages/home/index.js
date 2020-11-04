@@ -11,11 +11,11 @@ class App extends React.Component {
       <div className="App">
         <div className="box">
           <Button type="link" size="large">
-            <Link to="/files">Go to upload file page</Link>
+            <Link to="/files" data-test="link-of-upload">Upload File</Link>
           </Button>
 
           <Button type="link" size="large">
-            <Link to="/todo">Go to todo list page</Link>
+            <Link to="/todo" data-test="link-of-todo">Todo List</Link>
           </Button>
         </div>
         {/* <p  className="yellow" onClick={this.handleLogin}>Login with GitHub</p>
