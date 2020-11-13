@@ -6,6 +6,6 @@ service mysql start
 sleep 3
 echo `service mysql status`
 
-mysql < file.sql
+mysql -uroot -proot < file.sql
 
 node index.js
